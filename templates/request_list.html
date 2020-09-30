@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block mainBlock %}
+    <div class="container">
+        <h1 class="display-4" style="text-align: center;">
+            List of Requests
+        </h1>
+        <br>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Products</th>
+                <th scope="col">Requestor</th>
+                <th scope="col">Request Time</th>
+                <th scope="col">Email of the Requestor</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <th scope="row">{{request["id"]}}</th>
+                    <td>{{request["products"]}}</td>
+                    <td>{{request["requestor"]}}</td>
+                    <td>{{request["request_time"]}}</td>
+                    <td>{{request["requestor_email"]}}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="text-align: center;">
+        <a href={{url_for("index")}}>
+        <input type="button" value="Back" class="btn btn-primary">
+        </a>
+    </div>
+    </div>
+{% endblock mainBlock %}

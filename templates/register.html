@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block mainBlock %}
+    <div class="container">
+        <h1 class="display-5" style="text-align: center;margin-bottom: 20px;">
+            New User Registration
+        </h1>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category, msg in messages %}
+                  <div class="alert alert-{{ category }}" role="alert">{{msg}}</div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="#" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="row">
+                <div class="col">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="Enter your First Name">
+                </div>
+                <div class="col">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="Enter your Last Name">
+                    
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="police_reg_num">Police Register Number:</label>
+                <input type="number" name="police_reg_num" class="form-control" placeholder="Enter your Police ID Number">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="userid">New User ID</label>
+                <input type="text" name="userid" class="form-control" placeholder="Type in your User ID" minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Enter any Password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Repeat Password">
+            </div>
+            <div class="form-group">
+                <label for="user_email">E-mail Address:</label>
+                <input type="email" name="user_email" id="user_email" class="form-control" placeholder="Enter your Email">
+            </div>
+            <label for="access_rights">Access Rights:</label>
+            <select name="access_rights" id="acce   ss_rights_select" class="form-control" aria-placeholder="Select...">
+                <option value="" disabled selected>Select an option</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+                <option value="Editor">Editor</option>
+            </select>
+            <div style="margin-top: 20px;text-align: center;">   
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <a href=url_for('home')>
+                    <button class="btn btn-secondary" style="margin-left: 10px;">Cancel</button>
+                </a>
+            </div>
+        </form>
+    </div>
+{% endblock mainBlock %}

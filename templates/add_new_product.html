@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+  {% block title %}
+    <title>
+      Add New Product
+    </title>
+  {% endblock title %}
+ {% block mainBlock %}
+  <style>
+    .grid-css {
+      text-align: right;
+    }
+  </style>
+  <div class="container" style="margin-top: 10px;">
+    <h2 class="h2" style="text-align: center;">
+      Add new Product
+    </h2> 
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-success" role="alert">{{msg}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action="#" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <label for="product_name">Enter the Product Name:</label> 
+        <input type="text" name="product_name" class="form-control" placeholder="Enter the Product Name" minlength="4" maxlength="16" required>
+        <label for="product_type">Enter type of the Product:</label>
+        <select name="select_dropdown_type" class="form-control" required>
+            <option value="" disabled selected>Select Type...</option>
+            {% for option in results %}
+            {% print(option) %}
+            <option value= {{ option['product_type'] }}>{{ option['product_type'] }}</option>
+            {% endfor %}
+          </select>
+        <label for="entry_date">Enter Date of Entry:</label>
+        <input class="form-control" type="date" name="entry_date" required>
+        <label for="status_entry">Status of the Entry:</label>
+        <div class="statusDropdown">
+          <select name="select_dropdown_status" class="form-control" id="select-status" required>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      <div class="formSubmitButtons" style="text-align: center; margin-top: 20px;">
+        <button type="submit" class="btn btn-primary">Add Entry</button>
+        <a href={{ url_for('index') }}>
+          <input type="button" class="btn btn-secondary" value="Cancel">
+        </a>
+      </div>
+    </form>
+  </div>
+ {% endblock mainBlock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block mainBlock %}
+<div class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, msg in messages %}
+                  <div class="alert alert-{{ category }}" role="alert">{{msg}}</div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <form method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+      <label for="userid">User ID</label>
+      <input name = "userid" type="text" class="form-control" placeholder="Enter your User ID">
+      <small id="useridHelp" class="form-text text-muted">We'll never share your User ID with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="user_password">Password</label>
+      <input name="user_password" type="password" class="form-control" id="user_password" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
+      <label for="rememberme"><small>Remember me?</small> </label>
+      <input type="checkbox" name="rememberme" id="rememberme-checkbox">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="button" value="Cancel" class="btn btn-secondary">
+    </form>
+    <div class="text-muted  mt-2">
+      <small>
+      Need an Account?
+      <a href= "#">Register Now</a>
+      </small>
+    </div>
+</div>
+{% endblock mainBlock %}

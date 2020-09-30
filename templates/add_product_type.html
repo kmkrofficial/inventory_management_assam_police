@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+    {% block title %}
+      <title>
+        Add Product Type
+      </title>
+    {% endblock title %}
+    {% block mainBlock %}
+        <div class="container">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, msg in messages %}
+                  <div class="alert alert-{{ category }}" role="alert">{{msg}}</div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+          <form method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="form-group">
+              <label for="specify_new_type">Specify New Product Type</label>
+              <input type="text" name="specify_new_type" class="form-control" id="specify_new_type" aria-describedby="emailHelp" placeholder="Specify type" required>
+              <small id="" class="form-text text-muted">This displays under the dropdown list box in product type box. And also helps in categorizing products.</small>
+            </div>
+            <div class="buttons" style="text-align: center;">
+              <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+              <a href= {{ url_for('index') }}>
+                <input type="button" class="btn btn-secondary btn-sm" value="Cancel">
+              </a>
+            </div>
+        </form>
+        </div>
+    {% endblock mainBlock %}

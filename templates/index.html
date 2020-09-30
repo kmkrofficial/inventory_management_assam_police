@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block mainBlock %}   
+<div class="container" style="text-align: center;">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-info" role="alert">{{msg}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <a href={{ url_for('product_entry_page') }}> <input type="button" value="Enter Product" class="btn btn-dark"> </a>
+    <a href={{ url_for('add_product_type') }}> <input type="button" value="Enter Product Type" class="btn btn-dark"> </a>
+    <a href={{ url_for('police_entry') }}> <input type="button" value="Police Entry" class="btn btn-dark"> </a>
+    <a href={{ url_for('view_table') }}> <input type="button" value="View Members" class="btn btn-dark"> </a>
+    <a href={{ url_for('request_list') }}> <input type="button" value="Requests List" class="btn btn-dark"> </a>
+    <a href={{ url_for('place_order') }}> <input type="button" value="Place a Request" class="btn btn-dark"> </a>
+    
+    
+</div>
+{% endblock mainBlock %}

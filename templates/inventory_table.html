@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %}
+<title>View Members</title>
+{% endblock title %} {% block mainBlock %}
+<div class="column">
+  <div class="container" style="text-align: center;">
+    <a href={{url_for("index")}}><input type="button" value="Back" class="btn btn-dark"></a>
+    <a href={{url_for("police_entry")}}><input type="button" value="Add an Entry" class="btn btn-dark"></a>
+    <a href={{url_for("upload")}}><input type="button" value="Upload worksheets" class="btn btn-dark"></a>
+  <br>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Police Name</th>
+        <th scope="col">ID</th>
+        <th scope="col">Station Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in result %}
+      <tr>
+        <th>{{row["id"]}}</th>
+        <td>{{row["mem_name"]}}</td>
+        <th>{{row["police_id"]}}</th>
+        <td>{{row["station"]}}</td>
+        <td><a href="">Delete</a><br><a href="">Edit Details</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+</div>
+{% endblock mainBlock %}

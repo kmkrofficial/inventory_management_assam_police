@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>
+        Excel Upload
+    </title>
+{% endblock title %}
+{% block mainBlock %}
+    <div class="container">
+        <h2 style="text-align: center;">
+            Add Police Members using Excel Upload
+        </h2>
+        <br>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for msg in messages %}
+            <div class="alert alert-success" role="alert">{{msg}}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="post" style="text-align: center;" enctype=multipart/form-data>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <label for="files">Upload your File:</label>
+            <input type="file" name="files" id="files" class="form-control">
+            <br>
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <button value="Cancel" class="btn btn-secondary">Cancel</button>
+        </form>
+    </div>
+{% endblock mainBlock %}

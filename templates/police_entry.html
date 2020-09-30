@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+  {% block title %}
+    <title>
+      Add New Product
+    </title>
+  {% endblock title %}
+ {% block mainBlock %}
+  <style>
+    .grid-css {
+      text-align: right;
+    }
+  </style>
+  <div class="container" style="margin-top: 10px;">
+    <h2 class="h2" style="text-align: center;">
+      Add new Police Entry
+    </h2> 
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-success" role="alert">{{msg}}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action="#" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <label for="product_name">Enter Your Name:</label> 
+        <input type="text" name="police_name" class="form-control" placeholder="Enter your Name" minlength="4" maxlength="25" required>
+        <label for="product_name">Enter Your ID:</label> 
+        <input type="text" name="police_id" class="form-control" placeholder="Enter your ID" minlength="4" maxlength="4" required>
+        <label for="text">Enter Station Name:</label>
+        <input type="text" name="station_name" class="form-control" placeholder="Enter the station name" minlength="3" maxlength="15" required>
+        </div>
+      <div class="formSubmitButtons" style="text-align: center; margin-top: 20px;">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href={{ url_for('index') }}>
+          <input type="button" class="btn btn-secondary" value="Cancel">
+        </a>
+      </div>
+    </form>
+  </div>
+ {% endblock mainBlock %}
