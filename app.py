@@ -12,7 +12,7 @@ flask_obj.secret_key = "9f9dace5bff3b61cd9603b631d00bad8"
 db_connect = pymysql.connect(
     host = "localhost",
     user = 'root',
-    password = "temppass@123",
+    password = "#######",
     db = "inventory_management",
     charset = "utf8mb4",
     cursorclass = pymysql.cursors.DictCursor
@@ -38,7 +38,7 @@ def email_client(email, s):
     smtp_server = "smtp.gmail.com"
     sender_email = "18eucs058@skcet.ac.in"
     receiver_email = email
-    password = "temppass@321"
+    password = "#######"
     message = f"""\
     Subject: Sample Billing
 
